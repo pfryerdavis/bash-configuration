@@ -1,0 +1,28 @@
+[credential]
+	helper = 
+	helper = store --file /opt/dev/var/private/git_credential_store
+[alias]
+        ft = fetch
+        cm = commit
+        co = checkout
+        br = branch
+        st = status
+        po = push origin
+        plo = pull origin
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[core]
+	commitGraph = true
+[diff]
+	algorithm = patience
+[gc]
+	writeCommitGraph = true
+[protocol]
+	version = 2
+[url "https://github.com/Shopify/"]
+	insteadOf = git@github.com:Shopify/
+	insteadOf = git@github.com:shopify/
+	insteadOf = ssh://git@github.com/Shopify/
+	insteadOf = ssh://git@github.com/shopify/
+[user]
+	name = Peter Fryer-Davis
+	email = peter.fryerdavis@shopify.com

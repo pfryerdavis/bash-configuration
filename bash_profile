@@ -27,11 +27,6 @@ export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Ho
 # The orginal version is saved in .bash_profile.pysave
 export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
-# AWS Cloud (for terraform access)
-export AWS_ACCESS_KEY="AKIAQGHZ2JPT3SKXFDVG"
-export AWS_SECRET_ACCESS_KEY="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"
-export AWS_REGION="us-east-2"
-
 # Add Google Cloud SDK to PATH
 export PATH="/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/bin/:${PATH}"
 
@@ -86,3 +81,6 @@ unset __conda_setup
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 if [ -e /Users/pfryerdavis/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/pfryerdavis/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Add cloudplatform kubeconfig
+export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}/Users/pfryerdavis/.kube/config:/Users/pfryerdavis/.kube/config.shopify.cloudplatform

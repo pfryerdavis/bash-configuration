@@ -19,9 +19,9 @@ if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
 eval "$(pyenv init -)"
 
 # AdoptOpenJDK version (default)
-# export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-# Regular Oracle version
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_152.jdk/Contents/Home"
+#export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+# OpenJDK version
+export JAVA_HOME=`/Library/Java/JavaVirtualMachines/jdk-15.0.2.jdk/Contents/Home`
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
@@ -56,31 +56,22 @@ export EDITOR="/usr/bin/vim"
 # Git autocompletes
 if [ -f $(brew --prefix)/etc/bash_completion ]; then  source $(brew --prefix)/etc/bash_completion; fi
 
+# aliases
 alias gls="gcloud compute instances list"
 alias gssh="gcloud compute ssh"
+alias k="kubectl"
+
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/sqlite/lib"
 export CPPFLAGS="-I/usr/local/opt/sqlite/include"
 export PKG_CONFIG_PATH="/usr/local/opt/sqlite/lib/pkgconfig"
-# added by Anaconda2 2019.03 installer
-# >>> conda init >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$(CONDA_REPORT_ERRORS=false '/anaconda2/bin/conda' shell.bash hook 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    \eval "$__conda_setup"
-else
-    if [ -f "/anaconda2/etc/profile.d/conda.sh" ]; then
-        . "/anaconda2/etc/profile.d/conda.sh"
-        CONDA_CHANGEPS1=false conda activate base
-    else
-        \export PATH="/anaconda2/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda init <<<
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 if [ -e /Users/pfryerdavis/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/pfryerdavis/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
 # Add cloudplatform kubeconfig
 export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}/Users/pfryerdavis/.kube/config:/Users/pfryerdavis/.kube/config.shopify.cloudplatform
+
+# cloudplatform: add Shopify clusters to your local kubernetes config
+export KUBECONFIG=${KUBECONFIG:+$KUBECONFIG:}/Users/pfryerdavis/.kube/config:/Users/pfryerdavis/.kube/config.shopify.cloudplatform
+for file in /Users/pfryerdavis/src/github.com/Shopify/cloudplatform/workflow-utils/*.bash; do source ${file}; done
